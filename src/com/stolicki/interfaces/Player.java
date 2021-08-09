@@ -51,7 +51,7 @@ public class Player implements Saveable {
 
     @Override
     public List<String> write() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add(0, this.name);
         list.add(1, String.valueOf(this.hitPoints));
         list.add(2, String.valueOf(this.strength));
