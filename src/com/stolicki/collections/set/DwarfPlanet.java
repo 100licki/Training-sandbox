@@ -3,6 +3,6 @@ package com.stolicki.collections.set;
 public class DwarfPlanet extends HeavenlyBody {
 
     public DwarfPlanet(String name, double orbitalPeriod) {
-        super(name, orbitalPeriod, BodyType.DWARF_PLANET);
+        super(name, orbitalPeriod, BodyTypes.DWARF_PLANET);
     }
 }

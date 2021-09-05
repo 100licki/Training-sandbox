@@ -9,7 +9,7 @@ public abstract class HeavenlyBody {
     private final double orbitalPeriod;
     private final Set<HeavenlyBody> satellites;
 
-    public HeavenlyBody(String name, double orbitalPeriod, BodyType bodyType) {
+    public HeavenlyBody(String name, double orbitalPeriod, BodyTypes bodyType) {
         this.key = new Key(name, bodyType);
         this.orbitalPeriod = orbitalPeriod;
         this.satellites = new HashSet<>();
@@ -32,21 +32,18 @@ public abstract class HeavenlyBody {
         return this.satellites.add(satellite);
     }
 
-    public static Key makeKey(String name, BodyType bodyType) {
+    public static Key makeKey(String name, BodyTypes bodyType) {
         return new Key(name, bodyType);
     }
 
     @Override
     public String toString() {
-        return "HeavenlyBody{" +
-                "name:'" + key.name + '\'' +
-                ", bodyType=" + key.bodyType +
-                ", orbitalPeriod=" + orbitalPeriod +
-                '}';
+        return this.key.name + ": " + this.key.bodyType +
+                ", " + this.orbitalPeriod;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HeavenlyBody that = (HeavenlyBody) o;
@@ -54,19 +51,19 @@ public abstract class HeavenlyBody {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(key);
     }
 
-    public enum BodyType {
+    public enum BodyTypes {
         PLANET, DWARF_PLANET, MOON
     }
 
     public static final class Key {
         private final String name;
-        private final BodyType bodyType;
+        private final BodyTypes bodyType;
 
-        private Key(String name, BodyType bodyType) {
+        private Key(String name, BodyTypes bodyType) {
             this.name = name;
             this.bodyType = bodyType;
         }
@@ -75,7 +72,7 @@ public abstract class HeavenlyBody {
             return name;
         }
 
-        public BodyType getBodyType() {
+        public BodyTypes getBodyType() {
             return bodyType;
         }
 
@@ -94,10 +91,7 @@ public abstract class HeavenlyBody {
 
         @Override
         public String toString() {
-            return "Key{" +
-                    "name='" + name + '\'' +
-                    ", bodyType=" + bodyType +
-                    '}';
+            return name + ": " + bodyType;
         }
     }
 }
