@@ -12,7 +12,7 @@ public class Main {
     public static final String EOF = "EOF";
 
     public static void main(String[] args) {
-        ArrayBlockingQueue<String> buffer = new ArrayBlockingQueue<String>(6);
+        ArrayBlockingQueue<String> buffer = new ArrayBlockingQueue<>(6);
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);
 
